@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:title="Từ A-Z"
+        android:id="@+id/ascending"
+        app:showAsAction="never" />
+    <item
+        android:title="Từ Z-A"
+        android:id="@+id/descending"
+        app:showAsAction="never" />
+    <item
+        android:title="Ngày được thêm vào"
+        android:id="@+id/date_added"
+        app:showAsAction="never" />
+</menu>

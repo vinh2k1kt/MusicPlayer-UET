@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">music-player-svmc</string>
+    <string name="singerName">Singer Name</string>
+    <string name="songName">Song Name</string>
+    <string name="title">Song Name</string>
+    <string name="totalTime">--:--</string>
+    <string name="runTime">--:--</string>
+    <string name="random">Random</string>
+    <string name="previous">Previous</string>
+    <string name="pause">Pause</string>
+    <string name="next">Next</string>
+    <string name="repeat">Repeat</string>
+    <string name="searchContext">Type Something Here</string>
+    <string name="singer">Singer Name</string>
+</resources>
