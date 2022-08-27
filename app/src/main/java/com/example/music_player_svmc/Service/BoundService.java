@@ -196,7 +196,8 @@ public class BoundService extends Service {
     private PendingIntent sendCloseCommand() {
         Intent close_intent = new Intent(this, ActionBroadcastReceiver.class);
         close_intent.setAction(Constant.ACTION_CLOSE);
-        return PendingIntent.getBroadcast(getApplicationContext(), Constant.REQUEST_CODE_NEXT, close_intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        return PendingIntent.getBroadcast(getApplicationContext(), Constant.REQUEST_CODE_NEXT,
+                close_intent, PendingIntent.FLAG_UPDATE_CURRENT);
     }
 
     private PendingIntent sendNextCommand() {

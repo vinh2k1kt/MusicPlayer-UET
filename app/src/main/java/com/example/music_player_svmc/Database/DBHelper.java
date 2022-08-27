@@ -48,7 +48,7 @@ public class DBHelper extends SQLiteOpenHelper {
                     "(%s INTEGER PRIMARY KEY AUTOINCREMENT," +
                     "%s TEXT);", PLAYLIST_TABLE, PLAYLIST_ID, PLAYLIST_NAME);
 
-    private final SQLiteDatabase database = getWritableDatabase();
+    private SQLiteDatabase database = getWritableDatabase();
 
     public DBHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, VERSION);
@@ -58,6 +58,14 @@ public class DBHelper extends SQLiteOpenHelper {
     public void query(String sql) {
         SQLiteDatabase database = getWritableDatabase();
         database.execSQL(sql);
+    }
+
+    public void open() {
+        database = this.getWritableDatabase();
+    }
+
+    public void close() {
+        database.close();
     }
 
     //Get Data:Select
@@ -130,6 +138,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     // add 1 song to playlist
     public void addSongToPlaylist(Song song, String playlistName) {
+        open();
         ContentValues values = new ContentValues();
         values.put(DBHelper.SONG_NAME, song.getSongName());
         values.put(DBHelper.SONG_ALBUM, song.getSongAlbum());
@@ -143,6 +152,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     // remove 1 song in playlist
     public void removeSongInPlaylist(Song song, String playlistName) {
+        open();
         final String REMOVE_SONG = String.format(
                 "DELETE FROM %s WHERE %s = '%s' AND %s = '%s'",
                 DBHelper.SONG_TABLE, DBHelper.SONG_NAME, song.getSongName(),
@@ -153,6 +163,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     // remove 1 playlist
     public void removePlaylist(String playlistName) {
+        open();
         final String REMOVE_PLAYLIST = String.format("DELETE FROM %s WHERE %s = '%s'",
                 DBHelper.PLAYLIST_TABLE, DBHelper.PLAYLIST_ID, getPlaylistID(playlistName));
         query(REMOVE_PLAYLIST);
@@ -161,6 +172,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     // remove all song in playlist
     public void removeAllSongInPlaylist(int playlistId) {
+        open();
         final String REMOVE_All_SONG_IN_PLAYLIST = String.format(
                 "DELETE FROM %s WHERE %s = '%s'",
                 DBHelper.SONG_TABLE, DBHelper.PLAYLIST_ID, playlistId);
@@ -174,6 +186,7 @@ public class DBHelper extends SQLiteOpenHelper {
      * @param playlistName
      */
     public void addPlaylist(String playlistName) {
+        open();
         ContentValues values = new ContentValues();
         values.put(DBHelper.PLAYLIST_NAME, playlistName);
         database.insert(DBHelper.PLAYLIST_TABLE, null, values);

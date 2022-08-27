@@ -38,7 +38,8 @@ public class MusicPlayerApp extends Application {
     }
 
     private void createNotificationChannel() {
-        NotificationChannel channel = new NotificationChannel(CHANNEL_ID, "Channel music", NotificationManager.IMPORTANCE_DEFAULT);
+        NotificationChannel channel = new NotificationChannel(CHANNEL_ID, "Channel music",
+                NotificationManager.IMPORTANCE_DEFAULT);
         channel.setSound(null, null);
         NotificationManager manager = getSystemService(NotificationManager.class);
         if (manager != null) {
